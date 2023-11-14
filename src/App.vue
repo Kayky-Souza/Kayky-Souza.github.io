@@ -10,6 +10,12 @@ const produtos = ref(null);
 fetch("https://vercel-store-kayky.vercel.app/api/jogo")
     .then(response => response.json())
     .then(data => produtos.value = data);
+
+const urlImg = "https://storage.googleapis.com/webclass_imgs/kayky/imagens/"
+
+function getImage(idImage:string) {
+  return urlImg+idImage
+}
 </script>
 
 <template>
@@ -19,6 +25,9 @@ fetch("https://vercel-store-kayky.vercel.app/api/jogo")
 
   <div class="jogos" >
     <jogobase class="jogo" v-for="jogo in (produtos as any).data">
+    <template #imagem>
+      <img :src="getImage((jogo as any)?.attributes.imagem)" class="card-img-top" alt="...">
+    </template>
     <template #jogo>{{ (jogo as any)?.attributes.jogo }}</template>
     <template #genero>{{ (jogo as any)?.attributes.genero }}</template>
     <template #distribuidora>{{ (jogo as any)?.attributes.distribuidora }}</template>
@@ -34,7 +43,8 @@ fetch("https://vercel-store-kayky.vercel.app/api/jogo")
   .jogos{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    
+    
   }
 
   .jogo{

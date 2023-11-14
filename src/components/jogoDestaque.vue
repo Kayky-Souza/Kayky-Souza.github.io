@@ -3,7 +3,7 @@
         <div class="oferta">
             <h2 class="informacao">God of War</h2>
             <p class="informacao">10% de desconto</p>
-            <a class="botao_confirmar" href="#">conferir</a>
+            <a class="botao_confirmar" href="/teste">conferir</a>
         </div>
     </div>
 </template>
