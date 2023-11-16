@@ -1,3 +1,8 @@
+<script setup lang="ts">
+  import { useRouter } from 'vue-router';
+  const router = useRouter()
+</script>
+
 <template>
     <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
   <div class="container-fluid">
@@ -11,7 +16,8 @@
           <a class="nav-link active" aria-current="page" href="#">Criar Conta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="/login">Login</a>
+          <!--@click="router.push('/login')"-->
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
