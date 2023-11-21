@@ -4,9 +4,20 @@
   const d_email = ref()
   const d_password = ref()
 
-  function login(){
-    console.log('login')
-  }
+  async function login(){
+  fetch('https://jogo.4cc.shop/api/login',{
+          method:  'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: d_email.value,
+            password: d_password.value,
+          })
+        })
+          .then(response => response.json())
+          .then(data => console.log(data))
+}
 </script>
 
 <template>
