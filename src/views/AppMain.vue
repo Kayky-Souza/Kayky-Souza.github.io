@@ -36,14 +36,10 @@ function getImage(idImage:string) {
 </template>
 
 <style scoped>
-
-body{
-    background-color: rgb(21, 25, 29) !important;
-}
   .jogos{
     display: flex;
     flex-wrap: wrap;
-    
+    background-color: rgb(21, 25, 29);
     
   }
 
