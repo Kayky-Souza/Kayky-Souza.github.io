@@ -21,7 +21,7 @@ function getImage(idImage:string) {
     <jogoDestaque></jogoDestaque>
 
 <div class="jogos" >
-  <jogobase class="jogo" v-for="jogo in (produtos as any).data">
+  <jogobase class="jogo" v-for="jogo in (produtos as any)?.data">
   <template #imagem>
     <img :src="getImage((jogo as any)?.attributes.imagem)" class="card-img-top" alt="...">
   </template>
@@ -45,6 +45,7 @@ function getImage(idImage:string) {
 
   .jogo{
     margin: 5rem auto;
+    border: 1px solid springgreen;
   }
   
 </style>
