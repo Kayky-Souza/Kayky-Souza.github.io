@@ -1,45 +1,76 @@
 <script setup lang="ts">
-  import { useRouter } from 'vue-router';
-  const router = useRouter()
+import { useRouter } from 'vue-router';
+import { useLoginStore } from '../store/login.ts'
+
+const store = useLoginStore()
+const router = useRouter()
+
+function logout() {
+
+  store.email = ""
+  store.id = ""
+  store.token = ""
+
+}
 </script>
 
 <template>
-    <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Gameshop</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Criar Conta</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-          <!--@click="router.push('/login')"-->
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Jogos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Ps4</a></li>
-            <li><a class="dropdown-item" href="#">Ps5</a></li>
-            <li><a class="dropdown-item" href="#">Xbox</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Ps4/Xbox</a></li>
-          </ul>
-        </li>
-        <!-- <li class="nav-item">
+  <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+      <RouterLink to="/" class="navbar-brand">Gameshop</RouterLink>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <RouterLink to="/" class="nav-link active" aria-current="page">Criar Conta</RouterLink>
+          </li>
+          <li v-if="store.email === ''" class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2" @click="router.push('/login')">Entre</button>
+          </li>
+          <li v-if="store.email !== ''">
+            <button type="button" class="btn btn-warning" @click="logout()">Sair</button>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Jogos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Ps4</a></li>
+              <li><a class="dropdown-item" href="#">Ps5</a></li>
+              <li><a class="dropdown-item" href="#">Xbox</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Ps4/Xbox</a></li>
+            </ul>
+          </li>
+          <li  v-if="store.email !== ''"><p>{{store.email}}</p></li>
+          
+          <!-- <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li> -->
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        </ul>
+        <li v-if="store.email !== ''">
+            
+          </li>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
-</template>
+</nav></template>
+
+<style scoped>
+  p{
+    color: aqua;
+  }
+  .navbarSupportedContent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+</style>

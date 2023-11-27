@@ -6,7 +6,7 @@ import { ref } from 'vue';
 const produtos = ref(null);
 //https://jogo.4cc.shop/api/docs/
 
-fetch("https://vercel-store-kayky.vercel.app/api/jogo")
+fetch("https://jogo.4cc.shop/api/jogo")
     .then(response => response.json())
     .then(data => produtos.value = data);
 
