@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppLogin from "../views/AppLogin.vue"
 import AppMain from "../views/AppMain.vue"
+import AppCart from "../views/addToCart.vue"
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     name: 'Login',
     component: AppLogin
   },
+  {
+    path: '/addCart/:id',
+    name: 'AppCart',
+    component: AppCart
+  }
   
 ]
 
