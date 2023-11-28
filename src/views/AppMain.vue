@@ -29,9 +29,8 @@ function getImage(idImage:string) {
   <template #genero>{{ (jogo as any)?.attributes.genero }}</template>
   <template #distribuidora>{{ (jogo as any)?.attributes.distribuidora }}</template>
   <template #plataforma>{{ (jogo as any)?.attributes.plataforma }}</template>
-  <template #preco>{{(jogo as any)?.attributes.preco}}R$</template>
   <template #actions>
-    <router-link :to="'/addCart/' + (jogo as any)?.id" class="btn btn-primary">Comprar</router-link>
+    <router-link :to="'/addCart/' + (jogo as any)?.id" class="btn btn-primary">{{(jogo as any)?.attributes.preco}}R$</router-link>
   </template>
 </jogobase>
 </div>

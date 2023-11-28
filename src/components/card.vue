@@ -60,6 +60,9 @@ function decrement(){
 function update(){
     store.products[props.id] = quantity.value
 }
+function remove(){
+    delete store.products[props.id]
+}
 
 </script>
 
@@ -94,7 +97,7 @@ function update(){
           <h5 class="mb-0"><span class="text-muted">R$ </span> 1000,00</h5>
         </div>
         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-          <a href="#!" class="text-danger"><i class="bi bi-trash bi-lg"></i></a>
+          <button @click="remove" class="text-danger"><i class="bi bi-trash bi-lg"></i></button>
         </div>
       </div>
     </div>

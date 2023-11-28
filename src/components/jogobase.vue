@@ -12,7 +12,6 @@ const produtos = ref(null);
     <p class="card-text"><slot name="genero"></slot></p>
     <p class="card-text"><slot name="distribuidora"></slot></p>
     <p class="card-text"><slot name="plataforma"></slot></p>
-    <Router-Link to="/addCart/:id" class="btn btn-primary"><b><slot name="preco"></slot></b></Router-Link>
     <slot name="actions">
       <button type="button" class="btn btn-secondary btn-lg" disabled> nao esta disponivel</button>
     </slot>

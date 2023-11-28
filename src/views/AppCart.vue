@@ -9,6 +9,7 @@
   const id = route.params.id;
   const products = ref(null)
 
+ 
   if (id === undefined){
 
   }else{
