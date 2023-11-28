@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import {useLoginStore} from '../stores/login.ts'
 
 const jogo = ref();
 const genero = ref();
@@ -10,6 +11,8 @@ const preco = ref();
 const imagem = ref();
 const quantidade = ref();
 const orderId = ref();
+const store = useLoginStore()
+
 
 async function createJogo() {
 
@@ -19,24 +22,24 @@ async function createJogo() {
             "data": {
                 "type": "jogo",
                 "attributes": {
-                    "createdAt": "2023-12-13T23:36:16.258Z",
-                    "updatedAt": "2023-12-13T23:36:16.258Z",
                     "jogo": jogo,
                     "genero": genero,
                     "distribuidora": distribuidora,
                     "plataforma": plataforma,
                     "preco": preco,
                     "imagem": imagem,
-                    "quantidade": quantidade,
-                    "orderId": orderId
+                    "quantidade": quantidade
                 }
             }
         });
+
+        console.log("Token" + store.token)
 
         const response = await fetch("https://jogo.4cc.shop/api/jogo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": "Bearer " + store.token
             },
             body: body
 
@@ -104,11 +107,6 @@ async function createJogo() {
                             <label class="form-label" for="form3Example4">quantidade</label>
                         </div>
 
-                        <div class="form-outline mb-3">
-                            <input v-model="orderId" type="number" id="form3Example4" class="form-control form-control-lg"
-                                placeholder="orderId" />
-                            <label class="form-label" for="form3Example4">orderId</label>
-                        </div>
 
 
                         <div class="text-center text-lg-start mt-4 pt-2">

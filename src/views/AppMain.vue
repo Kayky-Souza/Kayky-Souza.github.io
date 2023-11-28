@@ -24,9 +24,8 @@ function getImage(idImage:string) {
 </script>
 
 <template>
+    <p class="contador">{{ count }}</p>
     <jogoDestaque></jogoDestaque>
-    <p>{{ count }}</p>
-
 <div class="jogos" >
   <jogobase class="jogo" v-for="jogo in (produtos as any)?.data">
   <template #imagem>
@@ -37,7 +36,7 @@ function getImage(idImage:string) {
   <template #distribuidora>{{ (jogo as any)?.attributes.distribuidora }}</template>
   <template #plataforma>{{ (jogo as any)?.attributes.plataforma }}</template>
   <template #actions>
-    <router-link :to="'/addCart/' + (jogo as any)?.id" class="btn btn-primary">{{(jogo as any)?.attributes.preco}}R$</router-link>
+    <router-link :to="'/cart/' + (jogo as any)?.id" class="btn btn-primary">{{(jogo as any)?.attributes.preco}}R$</router-link>
   </template>
 </jogobase>
 </div>
@@ -45,6 +44,11 @@ function getImage(idImage:string) {
 </template>
 
 <style scoped>
+  .contador{
+    background-color: black;
+    color: white;
+  }
+
   .jogos{
     display: flex;
     flex-wrap: wrap;

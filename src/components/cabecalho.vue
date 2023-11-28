@@ -7,7 +7,6 @@ import { ref } from 'vue';
 const store = useLoginStore()
 const router = useRouter()
 
-
 function logout() {
 
   store.email = ""
@@ -15,19 +14,13 @@ function logout() {
   store.token = ""
 
 }
-
-let count = 0
-const quantidade = ref(count)
-Object.keys(cartStore.products).forEach(function() {
-  quantidade = count+1
-});
 </script>
 
 <template>
   <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
       <ul class="carrinho">
-        <li><router-link to="/cart"><i class="bi bi-cart display-6" style="color: white"></i>{{ count }}</router-link></li>
+        <li><router-link to="/cart"><i class="bi bi-cart display-6" style="color: white"></i></router-link></li>
         <li><RouterLink to="/" class="navbar-brand">Gameshop</RouterLink></li>
       </ul>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -56,7 +49,7 @@ Object.keys(cartStore.products).forEach(function() {
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Ps4/Xbox</a></li>
+              <li><RouterLink to="addJogo" class="dropdown-item" href="#">Add Jogo</RouterLink></li>
             </ul>
           </li>
           <li  v-if="store.email !== ''"><p>{{store.email}}</p></li>

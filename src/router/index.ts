@@ -17,8 +17,8 @@ const routes = [
     component: AppLogin
   },
   {
-    path: '/addCart/:id',
-    name: 'Addart',
+    path: '/cart/:id',
+    name: 'AddCart',
     component: AppCart
   },
   {

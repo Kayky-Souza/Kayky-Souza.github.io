@@ -3,20 +3,17 @@
   import { useRoute } from 'vue-router'
   import { ref } from 'vue';
   import { useCartStore } from '../stores/cartStore.ts'
-
-  const store = useCartStore();
-  const route = useRoute();
-  const id = route.params.id;
-  const products = ref(null)
-
- 
-  if (id === undefined){
-
+const store = useCartStore()
+const route = useRoute()
+const id = route.params.id
+console.log(route.name)
+if (route.name === "AddCart"){
+  if(store.products[id] === undefined){
+    store.products[id] = 1
   }else{
-    if(store.products[id] === undefined){
-      store.products[id] = 0
-    }
+    store.products[id] += 1
   }
+}
 </script>
 
 <template>
