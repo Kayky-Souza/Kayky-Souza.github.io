@@ -1,5 +1,21 @@
 <script setup lang="ts">
 	import card from "../components/card.vue"
+  import { useRoute } from 'vue-router'
+  import { ref } from 'vue';
+  import { useCartStore } from '../stores/cartStore.ts'
+
+  const store = useCartStore();
+  const route = useRoute();
+  const id = route.params.id;
+  const products = ref(null)
+
+  if (id === undefined){
+
+  }else{
+    if(store.products[id] === undefined){
+      store.products[id] = 0
+    }
+  }
 </script>
 
 <template>
@@ -15,8 +31,8 @@
                   class="fas fa-angle-down mt-1"></i></a></p>
           </div>
         </div>
-
-        <card :id="id"></card>
+        
+          <card v-for="(quantity,id) in store.products" :id="id"></card>
 
         
 

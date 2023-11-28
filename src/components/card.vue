@@ -11,6 +11,7 @@ const quantity = ref(1)
 
 const props = defineProps({
   id: { type: String, required: true },
+  show: {type: Boolean, required: true}
 })
 
 
@@ -21,14 +22,18 @@ onBeforeMount(() => {
 
 onMounted(() => {
 
-  if (store[props.id] === undefined){
-    store[props.id] = 1
+  if (store.products[props.id] === undefined){
+    store.products[props.id] = 1
     quantity.value = 1
   }else{
-    quantity.value = store[props.id] + 1
+     if(!props.show){
+      quantity.value = store.products[props.id] + 1
+    }else{
+      quantity.value = store.products[props.id] 
+    }
   }
 
-  fetch("https://jogo.4cc.shop/api/jogo" + props.id)
+  fetch("https://jogo.4cc.shop/api/jogo/" + props.id)
     .then(response => response.json())
     .then(data => produto.value = data.data);
 })
@@ -42,18 +47,18 @@ function getImgUrl(idImg: string) {
 
 function increment(){
   quantity.value = quantity.value + 1
-  store[props.id] = quantity.value
+  store.products[props.id] = quantity.value
 }
 
 function decrement(){
   if(quantity.value > 0){
     quantity.value = quantity.value - 1
-    store[props.id] = quantity.value
+    store.products[props.id] = quantity.value
   }
 }
 
 function update(){
-    store[props.id] = quantity.value
+    store.products[props.id] = quantity.value
 }
 
 </script>
@@ -84,7 +89,6 @@ function update(){
         <button class="btn btn-link px-2" @click="increment">
             <i class="bi bi-plus"></i>
           </button>
-        {{quantity}}
         </div>
         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
           <h5 class="mb-0"><span class="text-muted">R$ </span> 1000,00</h5>

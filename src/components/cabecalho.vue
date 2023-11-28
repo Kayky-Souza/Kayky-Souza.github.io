@@ -17,7 +17,10 @@ function logout() {
 <template>
   <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
-      <RouterLink to="/" class="navbar-brand">Gameshop</RouterLink>
+      <ul class="carrinho">
+        <li><router-link to="/cart"><i class="bi bi-cart display-6" style="color: white"></i></router-link></li>
+        <li><RouterLink to="/" class="navbar-brand">Gameshop</RouterLink></li>
+      </ul>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -65,6 +68,10 @@ function logout() {
 </nav></template>
 
 <style scoped>
+  .carrinho{
+    display: flex;
+    align-items: center;
+  }
   p{
     color: aqua;
   }
