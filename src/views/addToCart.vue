@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <card></card>
+        <card :id="id"></card>
 
         
 
