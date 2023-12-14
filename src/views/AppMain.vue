@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import jogobase from '../components/jogobase.vue'
 import jogoDestaque from '../components/jogoDestaque.vue';
-
+import { useCartStore } from '../stores/cartStore.ts'
+const store = useCartStore();
 import { ref } from 'vue';
 const produtos = ref(null);
+let count = 0
+Object.keys(store.products).forEach(function() {
+  count = count+1
+});
+
 //https://jogo.4cc.shop/api/docs/
 
 fetch("https://jogo.4cc.shop/api/jogo")
@@ -19,6 +25,7 @@ function getImage(idImage:string) {
 
 <template>
     <jogoDestaque></jogoDestaque>
+    <p>{{ count }}</p>
 
 <div class="jogos" >
   <jogobase class="jogo" v-for="jogo in (produtos as any)?.data">
@@ -42,12 +49,20 @@ function getImage(idImage:string) {
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(21, 25, 29);
-    
   }
 
   .jogo{
     margin: 5rem auto;
     border: 1px solid springgreen;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+
+  .btn{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
   
 </style>

@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useLoginStore } from '../stores/login.ts'
-
+import { useCartStore } from '../stores/cartStore.ts'
+const cartStore = useCartStore();
+import { ref } from 'vue';
 const store = useLoginStore()
 const router = useRouter()
+
 
 function logout() {
 
@@ -12,13 +15,19 @@ function logout() {
   store.token = ""
 
 }
+
+let count = 0
+const quantidade = ref(count)
+Object.keys(cartStore.products).forEach(function() {
+  quantidade = count+1
+});
 </script>
 
 <template>
   <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
       <ul class="carrinho">
-        <li><router-link to="/cart"><i class="bi bi-cart display-6" style="color: white"></i></router-link></li>
+        <li><router-link to="/cart"><i class="bi bi-cart display-6" style="color: white"></i>{{ count }}</router-link></li>
         <li><RouterLink to="/" class="navbar-brand">Gameshop</RouterLink></li>
       </ul>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -28,7 +37,7 @@ function logout() {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <RouterLink to="/" class="nav-link active" aria-current="page">Criar Conta</RouterLink>
+            <RouterLink to="/addUser" class="nav-link active" aria-current="page">Criar Conta</RouterLink>
           </li>
           <li v-if="store.email === ''" class="nav-item">
             <button type="button" class="btn btn-outline-light me-2" @click="router.push('/login')">Entre</button>

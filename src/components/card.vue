@@ -48,12 +48,14 @@ function getImgUrl(idImg: string) {
 function increment(){
   quantity.value = quantity.value + 1
   store.products[props.id] = quantity.value
+  store.quantidade = store.quantidade+1
 }
 
 function decrement(){
   if(quantity.value > 0){
     quantity.value = quantity.value - 1
     store.products[props.id] = quantity.value
+    store.quantidade = store.quantidade-1
   }
 }
 
