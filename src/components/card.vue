@@ -76,8 +76,8 @@ function remove(){
         </div>
 
         <div class="col-md-3 col-lg-3 col-xl-3">
-          <p class="lead fw-normal mb-2">{{produto?.attributes?.modelo}}</p>
-          <p><span class="text-muted">Marca: </span>{{produto?.attributes?.marca}}</p>
+          <p class="lead fw-normal mb-2">{{produto?.attributes?.nome}}</p>
+          <p><span class="text-muted">Nome: </span>{{produto?.attributes.jogo}}</p>
         </div>
         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
          <button class="btn btn-link px-2" @click="decrement">
@@ -90,7 +90,7 @@ function remove(){
           </button>
         </div>
         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-          <h5 class="mb-0"><span class="text-muted">R$ </span> 1000,00</h5>
+          <h5 class="mb-0"><span class="text-muted">R$ </span> {{produto?.attributes.preco}}</h5>
         </div>
         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
           <button @click="remove" class="text-danger"><i class="bi bi-trash bi-lg"></i></button>

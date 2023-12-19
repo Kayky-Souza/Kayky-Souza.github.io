@@ -47,6 +47,9 @@ function getImage(idImage:string) {
   .contador{
     background-color: black;
     color: white;
+    float: left;
+    position: absolute;
+    top: 0;
   }
 
   .jogos{

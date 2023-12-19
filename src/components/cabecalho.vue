@@ -79,7 +79,7 @@ function logout() {
   }
   .navbarSupportedContent{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
   }
 </style>
